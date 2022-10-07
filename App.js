@@ -1,9 +1,5 @@
-
 import React from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
@@ -12,14 +8,13 @@ import {
 
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Login from './React-App/Account/Login/Login';
 
-const Section = ({children, title}) => {
+} from 'react-native/Libraries/NewAppScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RouterNavigate from './React-App/Router/RouterNavigate';
+
+
+const Section = ({ children, title }) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -52,9 +47,18 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const Stack = createNativeStackNavigator();
   return (
-   <Login />
-  );
+    // <NavigationContainer>
+    //   <Stack.Navigator initialRouteName="Login">
+    //     <Stack.Screen name="Login" component={Login} />
+    //     <Stack.Screen name="Register" component={Register} />
+    //     <Stack.Screen name="Home" component={Home} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
+    <RouterNavigate />
+
+  )
 };
 
 const styles = StyleSheet.create({
